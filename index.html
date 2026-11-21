@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PeriodicX | Interactive Periodic Table</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand fw-bold" href="#">
+                ⚛ Periodic<span>X</span>
+            </a>
+
+            <span class="navbar-text">
+                Explore the Elements
+            </span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero text-center">
+        <div class="container">
+
+            <span class="badge hero-badge mb-3">
+                INTERACTIVE SCIENCE
+            </span>
+
+            <h1>
+                Explore the <span>Periodic Table</span>
+            </h1>
+
+            <p>
+                Discover all 118 elements and explore their properties.
+            </p>
+
+            <!-- Search -->
+            <div class="search-box mx-auto">
+                <input
+                    type="text"
+                    id="searchInput"
+                    class="form-control"
+                    placeholder="Search element, symbol, atomic number or H2O..."
+                    aria-label="Search elements or compounds"
+                >
+
+                <button id="searchBtn" class="btn search-btn">
+                    Search
+                </button>
+
+                <button id="resetBtn" class="btn reset-btn">
+                    Reset
+                </button>
+            </div>
+
+            <div id="searchMessage" class="search-message"></div>
+
+            <!-- Statistics -->
+            <div class="stats d-flex justify-content-center gap-4 flex-wrap mt-4">
+                <div>
+                    <h3 id="elementCount">118</h3>
+                    <span>Elements</span>
+                </div>
+
+                <div>
+                    <h3>18</h3>
+                    <span>Groups</span>
+                </div>
+
+                <div>
+                    <h3>7</h3>
+                    <span>Periods</span>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Category Filters -->
+    <section class="container-fluid px-3 px-lg-4 py-4">
+
+        <div class="section-heading">
+            <div>
+                <h2>Periodic Table</h2>
+                <p>Click any element to explore its properties.</p>
+            </div>
+        </div>
+
+        <div class="filter-buttons mb-4" id="filterButtons">
+
+            <button class="filter-btn active" data-category="all">
+                All Elements
+            </button>
+
+            <button class="filter-btn" data-category="alkali metal">
+                Alkali Metals
+            </button>
+
+            <button class="filter-btn" data-category="alkaline earth metal">
+                Alkaline Earth Metals
+            </button>
+
+            <button class="filter-btn" data-category="transition metal">
+                Transition Metals
+            </button>
+
+            <button class="filter-btn" data-category="post-transition metal">
+                Post-transition Metals
+            </button>
+
+            <button class="filter-btn" data-category="metalloid">
+                Metalloids
+            </button>
+
+            <button class="filter-btn" data-category="nonmetal">
+                Nonmetals
+            </button>
+
+            <button class="filter-btn" data-category="halogen">
+                Halogens
+            </button>
+
+            <button class="filter-btn" data-category="noble gas">
+                Noble Gases
+            </button>
+
+            <button class="filter-btn" data-category="lanthanide">
+                Lanthanides
+            </button>
+
+            <button class="filter-btn" data-category="actinide">
+                Actinides
+            </button>
+
+        </div>
+
+        <!-- Loading Message -->
+        <div id="loadingMessage" class="text-center py-5">
+            <div class="spinner-border text-info" role="status"></div>
+            <p class="mt-3">Loading all 118 elements...</p>
+        </div>
+
+        <!-- Periodic Table -->
+        <div class="table-wrapper">
+            <div id="periodicTable" class="periodic-table"></div>
+        </div>
+
+        <p class="table-hint">
+            On smaller screens, scroll horizontally to explore the complete table.
+        </p>
+
+        <!-- Legend -->
+        <div class="legend mt-4">
+
+            <span><i class="legend-box alkali-metal"></i> Alkali metal</span>
+            <span><i class="legend-box alkaline-earth-metal"></i> Alkaline earth</span>
+            <span><i class="legend-box transition-metal"></i> Transition metal</span>
+            <span><i class="legend-box post-transition-metal"></i> Post-transition</span>
+            <span><i class="legend-box metalloid"></i> Metalloid</span>
+            <span><i class="legend-box nonmetal"></i> Nonmetal</span>
+            <span><i class="legend-box halogen"></i> Halogen</span>
+            <span><i class="legend-box noble-gas"></i> Noble gas</span>
+            <span><i class="legend-box lanthanide"></i> Lanthanide</span>
+            <span><i class="legend-box actinide"></i> Actinide</span>
+
+        </div>
+
+        <!-- Water Compound Card -->
+        <section class="compound-section mt-5">
+
+            <div class="compound-card">
+                <div>
+                    <span class="compound-label">POPULAR COMPOUND</span>
+                    <h2>H<sub>2</sub>O — Water</h2>
+                    <p>
+                        Explore the chemical formula, molar mass, structure
+                        and properties of water.
+                    </p>
+                </div>
+
+                <button id="waterBtn" class="btn water-btn">
+                    Explore H₂O →
+                </button>
+            </div>
+
+         </section>
+
+    </section> 
+
+    <!-- Element Details Modal -->
+    <div
+        class="modal fade"
+        id="elementModal"
+        tabindex="-1"
+        aria-labelledby="modalElementName"
+        aria-hidden="true"
+    >
+
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+
+            <div class="modal-content element-modal-content">
+
+                <div class="modal-header">
+                    <div>
+                        <span class="modal-eyebrow">ELEMENT INFORMATION</span>
+                        <h2 class="modal-title" id="modalElementName">
+                            Element Name
+                        </h2>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="btn-close btn-close-white"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                    ></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="element-profile">
+
+                        <div class="big-element" id="modalElementCard">
+                            <span id="modalAtomicNumber">1</span>
+                            <strong id="modalSymbol">H</strong>
+                            <small id="modalAtomicMass">1.008</small>
+                        </div>
+
+                        <div class="element-intro">
+                            <span id="modalCategory" class="category-badge">
+                                Nonmetal
+                            </span>
+
+                            <h3 id="modalElementTitle">Hydrogen</h3>
+
+                            <p id="modalSummary">
+                                Element information will appear here.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <h5 class="properties-heading">Physical & Atomic Properties</h5>
+
+                    <div id="modalProperties" class="properties-grid"></div>
+
+                    <div class="extra-info mt-4">
+                        <h5>About This Element</h5>
+                        <p id="modalAbout">
+                            Additional information will appear here.
+                        </p>
+                    </div>
+
+                    <p class="data-note">
+                        Some properties may be unavailable or predicted for
+                        synthetic elements.
+                    </p>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button
+                        type="button"
+                        class="btn modal-close-btn"
+                        data-bs-dismiss="modal"
+                    >
+                        Close
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Compound Modal -->
+    <div
+        class="modal fade"
+        id="compoundModal"
+        tabindex="-1"
+        aria-labelledby="compoundTitle"
+        aria-hidden="true"
+    >
+
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+
+            <div class="modal-content element-modal-content">
+
+                <div class="modal-header">
+                    <div>
+                        <span class="modal-eyebrow">COMPOUND INFORMATION</span>
+                        <h2 class="modal-title" id="compoundTitle">
+                            Water (H₂O)
+                        </h2>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="btn-close btn-close-white"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                    ></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="compound-hero">
+                        <div class="water-symbol">H<sub>2</sub>O</div>
+
+                        <div>
+                            <h3>Water</h3>
+                            <p>
+                                A chemical compound made of hydrogen and oxygen.
+                            </p>
+                        </div>
+                    </div>
+
+                    <h5 class="properties-heading">Water Properties</h5>
+
+                    <div class="properties-grid">
+
+                        <div class="property-box">
+                            <span>Chemical Formula</span>
+                            <strong>H₂O</strong>
+                        </div>
+
+                        <div class="property-box">
+                            <span>Molar Mass</span>
+                            <strong>18.015 g/mol</strong>
+                        </div>
+
+                        <div class="property-box">
+                            <span>Common Name</span>
+                            <strong>Water</strong>
+                        </div>
+
+                        <div class="property-box">
+                            <span>Compound Type</span>
+                            <strong>Molecular compound</strong>
+                        </div>
+
+                        <div class="property-box">
+                            <span>Freezing Point</span>
+                            <strong>0 °C (at 1 atm)</strong>
+                        </div>
+
+                        <div class="property-box">
+                            <span>Boiling Point</span>
+                            <strong>100 °C (at 1 atm)</strong>
+                        </div>
+
+                        <div class="property-box">
+                            <span>Room Temperature</span>
+                            <strong>Liquid</strong>
+                        </div>
+
+                        <div class="property-box">
+                            <span>Elements Present</span>
+                            <strong>Hydrogen + Oxygen</strong>
+                        </div>
+
+                        <div class="property-box">
+                            <span>Number of Atoms</span>
+                            <strong>3 per molecule</strong>
+                        </div>
+
+                        <div class="property-box">
+                            <span>Shape</span>
+                            <strong>Bent / V-shaped</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="extra-info mt-4">
+                        <h5>About Water</h5>
+
+                        <p>
+                            A water molecule contains two hydrogen atoms
+                            covalently bonded to one oxygen atom. Water is
+                            essential for life and is a polar molecule.
+                            Its freezing and boiling points depend on pressure.
+                        </p>
+                    </div>
+
+                    <div class="water-atoms">
+                        <span>H</span>
+                        <span class="bond">—</span>
+                        <span>O</span>
+                        <span class="bond">—</span>
+                        <span>H</span>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button
+                        type="button"
+                        class="btn modal-close-btn"
+                        data-bs-dismiss="modal"
+                    >
+                        Close
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>

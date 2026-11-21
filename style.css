@@ -1,0 +1,1724 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* ========================================
+   1. GLOBAL STYLES
+======================================== */
+
+:root {
+    --bg: #080d1b;
+    --surface: #10182b;
+    --surface-light: #172239;
+    --border: #27344f;
+    --text: #f4f7ff;
+    --muted: #9aa9c4;
+    --accent: #65e6ff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    max-width: 100%;
+    scroll-behavior: smooth;
+    overflow-x: clip;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* Bootstrap container safety */
+
+.container,
+.container-fluid {
+    max-width: 100%;
+}
+
+/* ========================================
+   2. NAVBAR
+======================================== */
+
+.navbar {
+    width: 100%;
+    background: #0b1121;
+    border-bottom: 1px solid var(--border);
+    padding: 18px 0;
+}
+
+.navbar-brand {
+    font-size: 25px;
+    letter-spacing: -1px;
+}
+
+.navbar-brand span {
+    color: var(--accent);
+}
+
+.navbar-text {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* ========================================
+   3. HERO SECTION
+======================================== */
+
+.hero {
+    padding: 65px 15px 50px;
+    background:
+        radial-gradient(
+            ellipse at 50% 0%,
+            #17395a 0%,
+            transparent 65%
+        ),
+        linear-gradient(180deg, #0d1629, var(--bg));
+
+    border-bottom: 1px solid var(--border);
+}
+
+.hero-badge {
+    background: rgba(101, 230, 255, 0.1);
+    color: var(--accent);
+    border: 1px solid rgba(101, 230, 255, 0.3);
+    padding: 9px 14px;
+    letter-spacing: 2px;
+}
+
+.hero h1 {
+    font-size: clamp(30px, 4vw, 55px);
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin: 12px 0;
+    line-height: 1.2;
+}
+
+.hero h1 span {
+    color: var(--accent);
+}
+
+.hero p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+/* ========================================
+   4. SEARCH BOX
+======================================== */
+
+.search-box {
+    width: 100%;
+    max-width: 760px;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    margin-top: 28px;
+    border: 1px solid var(--border);
+    background: rgba(16, 24, 43, 0.9);
+    border-radius: 16px;
+}
+
+.search-box input {
+    min-width: 0;
+    flex: 1;
+    background: transparent;
+    color: white;
+    border: none;
+    box-shadow: none;
+    padding: 12px;
+}
+
+.search-box input:focus {
+    background: transparent;
+    color: white;
+    box-shadow: none;
+}
+
+.search-box input::placeholder {
+    color: #8291ad;
+}
+
+.search-btn {
+    flex-shrink: 0;
+    background: var(--accent);
+    color: #07111c;
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 9px;
+}
+
+.search-btn:hover {
+    background: #b1f4ff;
+    color: #07111c;
+}
+
+.reset-btn {
+    flex-shrink: 0;
+    background: #222f49;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 9px;
+}
+
+.reset-btn:hover {
+    background: #344564;
+    color: white;
+}
+
+.search-message {
+    min-height: 24px;
+    margin-top: 10px;
+    color: #ffb5bd;
+    font-size: 13px;
+}
+
+/* ========================================
+   5. STATISTICS
+======================================== */
+
+.stats > div {
+    min-width: 100px;
+    padding: 12px 20px;
+    border: 1px solid var(--border);
+    background: rgba(16, 24, 43, 0.7);
+    border-radius: 14px;
+}
+
+.stats h3 {
+    font-size: 26px;
+    color: var(--accent);
+    font-weight: 800;
+    margin-bottom: 3px;
+}
+
+.stats span {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* ========================================
+   6. SECTION HEADING
+======================================== */
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 12px 0 25px;
+}
+
+.section-heading h2 {
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.section-heading p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 0;
+}
+
+/* ========================================
+   7. CATEGORY FILTER BUTTONS
+======================================== */
+
+.filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    width: 100%;
+}
+
+.filter-btn {
+    background: #121c30;
+    border: 1px solid var(--border);
+    color: #c5d1e7;
+    border-radius: 9px;
+    padding: 10px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    color: #07111c;
+    background: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   8. PERIODIC TABLE ALIGNMENT
+======================================== */
+
+/*
+   Important:
+   18 columns fit inside the available width.
+   No fixed 1240px minimum width.
+*/
+
+.table-wrapper {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding: 8px 0 15px;
+    overflow: visible;
+}
+
+.periodic-table {
+    display: grid;
+
+    grid-template-columns: repeat(18, minmax(0, 1fr));
+
+    grid-template-rows: repeat(9, minmax(62px, auto));
+
+    gap: 4px;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: 0;
+}
+
+/* ========================================
+   9. ELEMENT CARDS
+======================================== */
+
+.element-card {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-width: 0;
+    min-height: 62px;
+
+    padding: 13px 1px 4px;
+
+    overflow: hidden;
+
+    color: white;
+
+    border: 1px solid var(--element-color);
+
+    background:
+        color-mix(
+            in srgb,
+            var(--element-color) 12%,
+            #10182b
+        );
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.22s ease,
+        background 0.22s ease,
+        box-shadow 0.22s ease,
+        opacity 0.22s ease;
+
+    animation: cardAppear 0.35s ease both;
+}
+
+.element-card:hover {
+    z-index: 3;
+
+    transform: translateY(-4px) scale(1.04);
+
+    background:
+        color-mix(
+            in srgb,
+            var(--element-color) 28%,
+            #10182b
+        );
+
+    box-shadow:
+        0 0 15px
+        color-mix(
+            in srgb,
+            var(--element-color) 35%,
+            transparent
+        );
+}
+
+.element-card .atomic-number {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+
+    font-size: clamp(6px, 0.65vw, 9px);
+
+    color: #d4def0;
+}
+
+.element-card .symbol {
+    font-size: clamp(10px, 1.15vw, 20px);
+    font-weight: 800;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.element-card .element-name {
+    display: block;
+
+    width: 100%;
+
+    font-size: clamp(5px, 0.58vw, 9px);
+
+    text-align: center;
+    overflow-wrap: anywhere;
+    line-height: 1.25;
+
+    margin-top: 3px;
+}
+
+.element-card .atomic-mass {
+    display: block;
+
+    width: 100%;
+
+    color: #bdcbe1;
+
+    font-size: clamp(5px, 0.5vw, 8px);
+
+    text-align: center;
+    overflow-wrap: anywhere;
+    line-height: 1.2;
+
+    margin-top: 3px;
+}
+
+/* Filtered elements */
+
+.element-card.filtered-out {
+    opacity: 0.12;
+    filter: grayscale(1);
+}
+
+.element-card.search-match {
+    z-index: 4;
+
+    box-shadow:
+        0 0 0 2px white,
+        0 0 20px var(--element-color);
+
+    transform: translateY(-3px);
+}
+
+.element-card:disabled {
+    cursor: default;
+}
+
+.element-card:focus-visible,
+.filter-btn:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 2px;
+}
+
+/* ========================================
+   10. ELEMENT CATEGORY COLORS
+======================================== */
+
+.alkali-metal {
+    --element-color: #ff8b94;
+}
+
+.alkaline-earth-metal {
+    --element-color: #ffbd80;
+}
+
+.transition-metal {
+    --element-color: #ffd166;
+}
+
+.post-transition-metal {
+    --element-color: #b9e769;
+}
+
+.metalloid {
+    --element-color: #65e6b3;
+}
+
+.nonmetal {
+    --element-color: #65e6ff;
+}
+
+.halogen {
+    --element-color: #78a8ff;
+}
+
+.noble-gas {
+    --element-color: #bd9bff;
+}
+
+.lanthanide {
+    --element-color: #ff9bd2;
+}
+
+.actinide {
+    --element-color: #ff9e80;
+}
+
+.unknown {
+    --element-color: #b5c0d4;
+}
+
+/* ========================================
+   11. ELEMENT LEGEND
+======================================== */
+
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 20px;
+
+    color: #c2cde0;
+    font-size: 11px;
+}
+
+.legend span {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.legend-box {
+    display: inline-block;
+
+    width: 11px;
+    height: 11px;
+
+    flex-shrink: 0;
+
+    border-radius: 3px;
+
+    background: var(--element-color);
+}
+
+.table-hint {
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 8px;
+}
+
+/* ========================================
+   12. ELEMENT ANIMATION
+======================================== */
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+   13. WATER COMPOUND SECTION
+======================================== */
+
+.compound-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+
+    width: 100%;
+    padding: 30px;
+
+    border-radius: 18px;
+    border: 1px solid #315d78;
+
+    background:
+        radial-gradient(
+            circle at 90% 10%,
+            #163f61,
+            transparent 45%
+        ),
+        #101a2e;
+}
+
+.compound-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.compound-card h2 {
+    font-size: 30px;
+    font-weight: 800;
+    margin-top: 10px;
+}
+
+.compound-card p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+.water-btn {
+    flex-shrink: 0;
+
+    padding: 13px 20px;
+
+    background: var(--accent);
+    color: #07111c;
+
+    font-weight: 800;
+    border-radius: 10px;
+
+    transition: 0.25s;
+}
+
+.water-btn:hover {
+    background: #b1f4ff;
+    color: #07111c;
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   14. ELEMENT DETAILS MODAL
+======================================== */
+
+.element-modal-content {
+    background: #10182b;
+    color: var(--text);
+
+    border: 1px solid #344562;
+    border-radius: 18px;
+
+    overflow: hidden;
+}
+
+.element-modal-content .modal-header {
+    background: #16233b;
+    border-bottom: 1px solid var(--border);
+    padding: 22px 25px;
+}
+
+.modal-eyebrow {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.element-modal-content .modal-title {
+    font-weight: 800;
+    font-size: 25px;
+    margin-top: 5px;
+}
+
+.element-modal-content .modal-body {
+    padding: 25px;
+}
+
+.element-profile {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+
+    padding-bottom: 25px;
+    border-bottom: 1px solid var(--border);
+}
+
+/* Large element card */
+
+.big-element {
+    --element-color: var(--accent);
+
+    flex-shrink: 0;
+
+    width: 125px;
+    height: 135px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border: 2px solid var(--element-color);
+    border-radius: 15px;
+
+    background:
+        color-mix(
+            in srgb,
+            var(--element-color) 12%,
+            #10182b
+        );
+}
+
+.big-element span {
+    align-self: flex-start;
+    margin-left: 14px;
+    font-size: 12px;
+}
+
+.big-element strong {
+    font-size: 48px;
+    line-height: 1.15;
+}
+
+.big-element small {
+    font-size: 11px;
+    color: var(--muted);
+}
+
+/* Element introduction */
+
+.element-intro {
+    min-width: 0;
+}
+
+.element-intro h3 {
+    font-size: 22px;
+    font-weight: 800;
+    margin: 12px 0 8px;
+}
+
+.element-intro p,
+.extra-info p {
+    font-size: 13px;
+    color: #b7c4da;
+    line-height: 1.8;
+}
+
+.category-badge {
+    display: inline-block;
+
+    padding: 6px 10px;
+
+    border: 1px solid var(--border);
+    background: #1c2941;
+    color: var(--accent);
+
+    border-radius: 7px;
+    font-size: 10px;
+    text-transform: capitalize;
+}
+
+/* ========================================
+   15. MODAL PROPERTIES GRID
+======================================== */
+
+.properties-heading,
+.extra-info h5 {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 25px 0 15px;
+}
+
+.properties-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.property-box {
+    min-width: 0;
+
+    padding: 14px;
+
+    background: #162239;
+    border: 1px solid #273751;
+    border-radius: 10px;
+}
+
+.property-box span {
+    display: block;
+
+    font-size: 10px;
+    color: var(--muted);
+
+    margin-bottom: 7px;
+}
+
+.property-box strong {
+    display: block;
+
+    font-size: 12px;
+    line-height: 1.6;
+
+    overflow-wrap: anywhere;
+
+    color: #f2f6ff;
+}
+
+/* Additional information */
+
+.extra-info {
+    border-top: 1px solid var(--border);
+    padding-top: 5px;
+}
+
+.data-note {
+    font-size: 10px;
+    color: #8f9eb7;
+    margin-top: 20px;
+}
+
+/* Modal footer */
+
+.element-modal-content .modal-footer {
+    border-top: 1px solid var(--border);
+}
+
+.modal-close-btn {
+    background: #23314a;
+    color: white;
+    border: 1px solid #3b4d69;
+    padding: 9px 20px;
+}
+
+.modal-close-btn:hover {
+    background: #344764;
+    color: white;
+}
+
+/* ========================================
+   16. WATER MODAL
+======================================== */
+
+.compound-hero {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    padding: 15px 0 25px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.water-symbol {
+    flex-shrink: 0;
+
+    font-size: 37px;
+    font-weight: 800;
+    color: var(--accent);
+
+    border: 2px solid #36728c;
+    border-radius: 15px;
+
+    padding: 18px;
+
+    background: #142b43;
+}
+
+.compound-hero h3 {
+    font-size: 23px;
+    font-weight: 800;
+}
+
+.compound-hero p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 0;
+}
+
+/* Water molecular representation */
+
+.water-atoms {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    padding: 25px 0 5px;
+
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.water-atoms span:not(.bond) {
+    display: grid;
+    place-items: center;
+
+    width: 55px;
+    height: 55px;
+
+    border-radius: 50%;
+
+    background: #1c3b59;
+    border: 1px solid #5ab9db;
+}
+
+.water-atoms span:nth-of-type(3) {
+    background: #523146;
+    border-color: #ff9bd2;
+}
+
+.water-atoms .bond {
+    color: var(--muted);
+}
+
+/* ========================================
+   17. TABLET RESPONSIVENESS
+======================================== */
+
+@media (max-width: 992px) {
+
+    .hero {
+        padding: 50px 15px 40px;
+    }
+
+    .periodic-table {
+        grid-template-rows: repeat(9, minmax(48px, auto));
+        gap: 3px;
+    }
+
+    .element-card {
+        min-height: 48px;
+        padding-top: 11px;
+        border-radius: 5px;
+    }
+
+    .element-card .symbol {
+        font-size: clamp(9px, 1.4vw, 15px);
+    }
+
+    .element-card .element-name {
+        font-size: 6px;
+    }
+
+    .element-card .atomic-mass {
+        font-size: 5px;
+    }
+
+    .element-card .atomic-number {
+        font-size: 6px;
+    }
+}
+
+/* ========================================
+   18. MOBILE RESPONSIVENESS
+======================================== */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        padding: 14px 0;
+    }
+
+    .navbar-brand {
+        font-size: 22px;
+    }
+
+    .navbar-text {
+        font-size: 11px;
+    }
+
+    .hero {
+        padding: 40px 12px;
+    }
+
+    .hero h1 {
+        font-size: clamp(27px, 6vw, 38px);
+        letter-spacing: -1px;
+    }
+
+    .hero p {
+        font-size: 13px;
+    }
+
+    .search-box {
+        flex-wrap: wrap;
+        padding: 8px;
+        gap: 8px;
+    }
+
+    .search-box input {
+        flex-basis: 100%;
+        width: 100%;
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .search-btn,
+    .reset-btn {
+        flex: 1;
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .stats {
+        gap: 8px !important;
+    }
+
+    .stats > div {
+        min-width: 75px;
+        padding: 9px;
+    }
+
+    .stats h3 {
+        font-size: 21px;
+    }
+
+    .stats span {
+        font-size: 10px;
+    }
+
+    .section-heading {
+        margin-bottom: 18px;
+    }
+
+    .section-heading h2 {
+        font-size: 21px;
+    }
+
+    .section-heading p {
+        font-size: 11px;
+    }
+
+    .filter-buttons {
+        gap: 7px;
+    }
+
+    .filter-btn {
+        padding: 8px 10px;
+        font-size: 10px;
+    }
+
+    .periodic-table {
+        grid-template-rows: repeat(9, minmax(38px, auto));
+        gap: 2px;
+    }
+
+    .element-card {
+        min-height: 38px;
+        padding: 10px 0 2px;
+        border-radius: 4px;
+    }
+
+    .element-card .symbol {
+        font-size: clamp(7px, 1.7vw, 12px);
+    }
+
+    .element-card .element-name {
+        font-size: 5px;
+        margin-top: 2px;
+    }
+
+    .element-card .atomic-mass {
+        font-size: 4px;
+        margin-top: 1px;
+    }
+
+    .element-card .atomic-number {
+        top: 2px;
+        left: 2px;
+        font-size: 5px;
+    }
+
+    .legend {
+        gap: 10px;
+        font-size: 9px;
+    }
+
+    .compound-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 22px;
+        gap: 18px;
+    }
+
+    .compound-card h2 {
+        font-size: 25px;
+    }
+
+    .compound-card p {
+        font-size: 12px;
+    }
+
+    .water-btn {
+        width: 100%;
+    }
+
+    .element-modal-content .modal-header {
+        padding: 16px;
+    }
+
+    .element-modal-content .modal-body {
+        padding: 16px;
+    }
+
+    .element-modal-content .modal-title {
+        font-size: 21px;
+    }
+
+    .element-profile {
+        align-items: flex-start;
+        gap: 13px;
+        padding-bottom: 18px;
+    }
+
+    .big-element {
+        width: 85px;
+        height: 105px;
+        border-radius: 10px;
+    }
+
+    .big-element strong {
+        font-size: 32px;
+    }
+
+    .big-element span {
+        font-size: 10px;
+        margin-left: 8px;
+    }
+
+    .big-element small {
+        font-size: 9px;
+    }
+
+    .element-intro h3 {
+        font-size: 17px;
+    }
+
+    .element-intro p,
+    .extra-info p {
+        font-size: 11px;
+    }
+
+    .properties-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 7px;
+    }
+
+    .property-box {
+        padding: 10px;
+    }
+
+    .property-box span {
+        font-size: 9px;
+    }
+
+    .property-box strong {
+        font-size: 10px;
+    }
+
+    .compound-hero {
+        gap: 12px;
+    }
+
+    .water-symbol {
+        font-size: 28px;
+        padding: 12px;
+    }
+
+    .compound-hero h3 {
+        font-size: 19px;
+    }
+
+    .compound-hero p {
+        font-size: 11px;
+    }
+}
+
+/* ========================================
+   19. VERY SMALL SCREENS
+======================================== */
+
+@media (max-width: 400px) {
+
+    .navbar-text {
+        font-size: 9px;
+    }
+
+    .periodic-table {
+        grid-template-rows: repeat(9, minmax(30px, auto));
+        gap: 1px;
+    }
+
+    .element-card {
+        min-height: 30px;
+        padding-top: 8px;
+        border-radius: 3px;
+    }
+
+    .element-card .symbol {
+        font-size: 7px;
+    }
+
+    .element-card .element-name {
+        font-size: 4px;
+    }
+
+    .element-card .atomic-mass {
+        display: none;
+    }
+
+    .element-card .atomic-number {
+        font-size: 4px;
+        top: 1px;
+        left: 1px;
+    }
+
+    .properties-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .big-element {
+        width: 75px;
+        height: 95px;
+    }
+
+    .big-element strong {
+        font-size: 28px;
+    }
+
+    .compound-card {
+        padding: 17px;
+    }
+}
+
+/* ========================================
+   20. ACCESSIBILITY
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+
+
+/* ========================================
+   BLACK + WHITE + MULTICOLOR THEME
+======================================== */
+
+:root {
+    --bg: #050505;
+    --surface: #101010;
+    --surface-light: #1b1b1b;
+    --border: #383838;
+    --text: #ffffff;
+    --muted: #c0c0c0;
+    --accent: #ffffff;
+}
+
+/* Main background */
+
+html,
+body {
+    background: #050505 !important;
+    color: #ffffff;
+}
+
+/* Navbar */
+
+.navbar {
+    background: #000000 !important;
+    border-bottom: 1px solid #444444;
+}
+
+.navbar-brand,
+.navbar-brand:hover {
+    color: #ffffff !important;
+}
+
+.navbar-brand span {
+    color: #ffffff !important;
+}
+
+.navbar-text {
+    color: #c7c7c7 !important;
+}
+
+/* Hero section */
+
+.hero {
+    background:
+        radial-gradient(
+            ellipse at top,
+            #292929 0%,
+            #111111 45%,
+            #050505 100%
+        ) !important;
+
+    border-bottom: 1px solid #444444;
+}
+
+.hero h1,
+.hero h2,
+.hero p {
+    color: #ffffff;
+}
+
+.hero h1 span {
+    color: #ffffff;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.hero-badge {
+    color: #ffffff;
+    background: #171717;
+    border: 1px solid #777777;
+}
+
+/* Search box */
+
+.search-box {
+    background: #111111;
+    border: 1px solid #555555;
+}
+
+.search-box input,
+.search-box input:focus {
+    background: transparent;
+    color: #ffffff;
+}
+
+.search-box input::placeholder {
+    color: #aaaaaa;
+}
+
+.search-btn {
+    background: #ffffff;
+    color: #000000;
+    border: 1px solid #ffffff;
+}
+
+.search-btn:hover {
+    background: #dedede;
+    color: #000000;
+}
+
+.reset-btn {
+    background: #252525;
+    color: #ffffff;
+    border: 1px solid #555555;
+}
+
+.reset-btn:hover {
+    background: #444444;
+    color: #ffffff;
+}
+
+/* Statistics */
+
+.stats > div {
+    background: #111111;
+    border: 1px solid #444444;
+}
+
+.stats h3 {
+    color: #ffffff;
+}
+
+.stats span {
+    color: #c5c5c5;
+}
+
+/* Section headings */
+
+.section-heading h2 {
+    color: #ffffff;
+}
+
+.section-heading p {
+    color: #bdbdbd;
+}
+
+/* Category buttons */
+
+.filter-btn {
+    background: #151515;
+    color: #ffffff;
+    border: 1px solid #555555;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+}
+
+/* Periodic table background */
+
+.table-wrapper {
+    background: #050505;
+}
+
+/* Multicolor element cards */
+
+.element-card {
+    color: #ffffff;
+
+    background:
+        color-mix(
+            in srgb,
+            var(--element-color) 24%,
+            #080808
+        );
+
+    border: 1px solid var(--element-color);
+
+    box-shadow:
+        inset 0 0 10px
+        color-mix(
+            in srgb,
+            var(--element-color) 8%,
+            transparent
+        );
+}
+
+/* Colorful hover effect */
+
+.element-card:hover {
+    color: #ffffff;
+
+    background:
+        color-mix(
+            in srgb,
+            var(--element-color) 48%,
+            #080808
+        );
+
+    border-color: var(--element-color);
+
+    box-shadow:
+        0 0 8px var(--element-color),
+        0 0 20px
+        color-mix(
+            in srgb,
+            var(--element-color) 50%,
+            transparent
+        );
+
+    transform: translateY(-4px) scale(1.04);
+}
+
+/* Atomic number and mass */
+
+.element-card .atomic-number,
+.element-card .atomic-mass {
+    color: #ffffff;
+}
+
+.element-card .element-name {
+    color: #ffffff;
+}
+
+/* Individual element colors */
+
+.alkali-metal {
+    --element-color: #ff4d6d;
+}
+
+.alkaline-earth-metal {
+    --element-color: #ff9f43;
+}
+
+.transition-metal {
+    --element-color: #ffd43b;
+}
+
+.post-transition-metal {
+    --element-color: #a8e063;
+}
+
+.metalloid {
+    --element-color: #00d2a0;
+}
+
+.nonmetal {
+    --element-color: #00cfff;
+}
+
+.halogen {
+    --element-color: #448aff;
+}
+
+.noble-gas {
+    --element-color: #b388ff;
+}
+
+.lanthanide {
+    --element-color: #ff70c5;
+}
+
+.actinide {
+    --element-color: #ff795e;
+}
+
+.unknown {
+    --element-color: #d0d0d0;
+}
+
+/* Search highlight */
+
+.element-card.search-match {
+    border: 2px solid #ffffff;
+
+    box-shadow:
+        0 0 0 2px #000000,
+        0 0 20px var(--element-color);
+}
+
+/* Legend */
+
+.legend {
+    color: #ffffff;
+}
+
+.legend-box {
+    border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.table-hint {
+    color: #c0c0c0;
+}
+
+/* Water compound section */
+
+.compound-card {
+    background:
+        radial-gradient(
+            circle at 90% 10%,
+            #252525,
+            transparent 50%
+        ),
+        #101010;
+
+    border: 1px solid #555555;
+}
+
+.compound-label {
+    color: #ffffff;
+}
+
+.compound-card h2,
+.compound-card p {
+    color: #ffffff;
+}
+
+.water-btn {
+    background: #ffffff;
+    color: #000000;
+    border: 1px solid #ffffff;
+}
+
+.water-btn:hover {
+    background: #dedede;
+    color: #000000;
+}
+
+/* Element details modal */
+
+.element-modal-content {
+    background: #0b0b0b;
+    color: #ffffff;
+    border: 1px solid #555555;
+}
+
+.element-modal-content .modal-header {
+    background: #171717;
+    border-bottom: 1px solid #444444;
+}
+
+.element-modal-content .modal-title {
+    color: #ffffff;
+}
+
+.modal-eyebrow {
+    color: #ffffff;
+}
+
+.element-intro h3 {
+    color: #ffffff;
+}
+
+.element-intro p,
+.extra-info p {
+    color: #d0d0d0;
+}
+
+/* Big colorful element card inside modal */
+
+.big-element {
+    background:
+        color-mix(
+            in srgb,
+            var(--element-color) 24%,
+            #080808
+        );
+
+    border-color: var(--element-color);
+
+    box-shadow:
+        0 0 20px
+        color-mix(
+            in srgb,
+            var(--element-color) 25%,
+            transparent
+        );
+}
+
+.big-element span,
+.big-element strong,
+.big-element small {
+    color: #ffffff;
+}
+
+/* Category badge */
+
+.category-badge {
+    background: #1b1b1b;
+    color: #ffffff;
+    border: 1px solid #666666;
+}
+
+/* Properties grid */
+
+.property-box {
+    background: #151515;
+    border: 1px solid #383838;
+}
+
+.property-box span {
+    color: #bdbdbd;
+}
+
+.property-box strong {
+    color: #ffffff;
+}
+
+.properties-heading,
+.extra-info h5 {
+    color: #ffffff;
+}
+
+.extra-info {
+    border-top-color: #444444;
+}
+
+.data-note {
+    color: #b0b0b0;
+}
+
+/* Modal close button */
+
+.modal-close-btn {
+    background: #ffffff;
+    color: #000000;
+    border: 1px solid #ffffff;
+}
+
+.modal-close-btn:hover {
+    background: #dedede;
+    color: #000000;
+}
+
+/* Water modal */
+
+.compound-hero {
+    border-bottom-color: #444444;
+}
+
+.compound-hero h3 {
+    color: #ffffff;
+}
+
+.compound-hero p {
+    color: #c0c0c0;
+}
+
+.water-symbol {
+    background: #171717;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+.water-atoms span:not(.bond) {
+    background: #171717;
+    border-color: #00cfff;
+    color: #ffffff;
+}
+
+.water-atoms span:nth-of-type(3) {
+    background: #241522;
+    border-color: #ff70c5;
+}
+
+.water-atoms .bond {
+    color: #ffffff;
+}
+
+/* Modal close icon */
+
+.btn-close {
+    filter: invert(1) grayscale(100%);
+}
+
+/* Scrollbar: no horizontal scrolling */
+
+html,
+body {
+    overflow-x: clip !important;
+}
+
+.table-wrapper {
+    overflow-x: hidden !important;
+    max-width: 100%;
+}
+
+.periodic-table {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+/* Selection color */
+
+::selection {
+    background: #ffffff;
+    color: #000000;
+}
+
+/* Smooth color transitions */
+
+.element-card,
+.filter-btn,
+.search-btn,
+.reset-btn,
+.water-btn {
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
